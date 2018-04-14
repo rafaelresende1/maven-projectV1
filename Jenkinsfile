@@ -5,7 +5,8 @@ pipeline {
         maven 'localMaven'
         git 'Git'
     }
- 
+    }
+
 stages{
         stage('Build'){
             steps {
@@ -18,4 +19,4 @@ stages{
                 }
             }
         }
- 
+     
