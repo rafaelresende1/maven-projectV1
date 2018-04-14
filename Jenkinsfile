@@ -3,7 +3,7 @@ pipeline {
  
     tools {
         maven 'localMaven'
-        git 'GIT'
+        git 'Git'
     }
  
 stages{
