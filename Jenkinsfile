@@ -2,7 +2,7 @@ pipeline {
     agent any
  
     tools {
-        maven 'C:\Users\rafae\OneDrive\Documents\JENKINS\apache-maven-3.5.3'
+        maven 'C:Users\rafae\OneDrive\Documents\JENKINS\apache-maven-3.5.3'
         git 'localGit'
     }
 
