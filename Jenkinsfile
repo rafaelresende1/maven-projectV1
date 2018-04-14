@@ -3,7 +3,7 @@ pipeline {
  
     tools {
         maven 'localMaven'
-        git 'localGit'
+       
     }
 
 
