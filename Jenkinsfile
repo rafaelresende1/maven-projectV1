@@ -1,4 +1,3 @@
-@@ -1,22 +1,75 @@
 pipeline {
     agent any
  
@@ -22,24 +21,19 @@ pipeline {
                 }
 
   stages{
-        stage('Build'){
-            steps {
-                bat 'mvn clean package'
-            }
-            post {
-                success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
-                }
-
+      stage ('Build') {
+        def mvnHome = tool 'localMaven'
  
-
-            stage ('Deployments'){
-                steps {
-
-                build job: 'maven-project'
-                    }}
-
+        sh "${mvnHome}/bin/mvn --batch-mode -V -U -e clean test -Dsurefire.useFile=false"
+ 
+        junit testResults: '**/target/surefire-reports/TEST-*.xml'
+ 
+        def java = scanForIssues tool: [$class: 'Java']
+        def javadoc = scanForIssues tool: [$class: 'JavaDoc']
+         
+        publishIssues issues:[java]
+        publishIssues issues:[javadoc]
+    }
 
 
       stage ('Analysis') {
