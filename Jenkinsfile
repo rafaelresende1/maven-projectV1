@@ -33,11 +33,11 @@ pipeline {
                     }
     
         stage('checkstyle') {
-            steps
+            steps{
            step([$class: 'CheckStylePublisher', pattern: 'target/scalastyle-result.xml, target/scala-2.11/scapegoat-report/scapegoat-scalastyle.xml'])
         }}
       
-        
+  }
 
     post {
         success {
@@ -50,7 +50,7 @@ pipeline {
     }
     }
 
-   }         
+   }        
         
 
     
