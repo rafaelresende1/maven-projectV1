@@ -37,7 +37,8 @@ pipeline {
            step([$class: 'CheckStylePublisher', pattern: 'target/scalastyle-result.xml, target/scala-2.11/scapegoat-report/scapegoat-scalastyle.xml'])
         }}
         
-        node('teste') {
+        stage('teste'){
+        node {
     stage "Create build output"
     
     // Make the output directory.
@@ -53,7 +54,7 @@ pipeline {
     
     // Archive the build output artifacts.
     archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
-}   
+}   }
       
   }
 
