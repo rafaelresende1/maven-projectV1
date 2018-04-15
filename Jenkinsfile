@@ -32,11 +32,7 @@ pipeline {
                     }
                     }
     
-        stage('checkstyle') {
-            steps{
-           step([$class: 'CheckStylePublisher', pattern: 'target/scalastyle-result.xml, target/scala-2.11/scapegoat-report/scapegoat-scalastyle.xml'])
-        }}
-        
+     
         node {
     stage "Create build output"
     
