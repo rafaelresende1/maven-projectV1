@@ -37,10 +37,10 @@
     }
 
             stage ('Deployments'){
-
+ steps {
 
                 build job: 'maven-project'
-                    }
+                    }}
     }
     post {
         success {
