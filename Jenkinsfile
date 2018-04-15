@@ -34,12 +34,13 @@
                     sh "echo 'Run Static Code Analysis'"
                     }
 
+    }
+
             stage ('Deployments'){
 
 
                 build job: 'maven-project'
                     }
-    }
     }
     post {
         success {
