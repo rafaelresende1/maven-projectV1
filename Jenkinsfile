@@ -29,7 +29,8 @@ pipeline {
                 steps {
 
                 build job: 'maven-project'
-                    }}
+                    }
+                    }
     
         stage('checkstyle') {
             steps
