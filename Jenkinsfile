@@ -32,23 +32,36 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
 
-  //  stage('Static Code Analysis'){
-        //    steps {
-            //        checkout scm
-             //       sh "echo 'Run Static Code Analysis'"
-           //         }
-
-    }
+ 
 
             stage ('Deployments'){
                 steps {
 
                 build job: 'maven-project'
                     }}
+
+
+
+      stage ('Analysis') {
+        def mvnHome = tool 'localMaven'
+ 
+        sh "${mvnHome}/bin/mvn -batch-mode -V -U -e checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs spotbugs:spotbugs"
+ 
+        def checkstyle = scanForIssues tool: [$class: 'CheckStyle'], pattern: '**/target/checkstyle-result.xml'
+        publishIssues issues:[checkstyle]
     
-        stage('checkstyle') {
-           step([$class: 'CheckStylePublisher', pattern: 'target/scalastyle-result.xml, target/scala-2.11/scapegoat-report/scapegoat-scalastyle.xml'])
-        }
+        def pmd = scanForIssues tool: [$class: 'Pmd'], pattern: '**/target/pmd.xml'
+        publishIssues issues:[pmd]
+         
+        def cpd = scanForIssues tool: [$class: 'Cpd'], pattern: '**/target/cpd.xml'
+        publishIssues issues:[cpd]
+         
+        def findbugs = scanForIssues tool: [$class: 'FindBugs'], pattern: '**/target/findbugsXml.xml'
+        publishIssues issues:[findbugs]
+ 
+        def spotbugs = scanForIssues tool: [$class: 'SpotBugs'], pattern: '**/target/spotbugsXml.xml'
+        publishIssues issues:[spotbugs]
+    }
       
 }
         
