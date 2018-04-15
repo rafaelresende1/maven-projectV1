@@ -39,7 +39,7 @@ pipeline {
         
         stage('teste'){
             steps{
-        node {
+        node ('testes'){
     stage "Create build output"
     
     // Make the output directory.
