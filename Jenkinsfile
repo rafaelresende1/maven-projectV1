@@ -47,7 +47,7 @@ pipeline {
                     }}
     
         stage('checkstyle') {
-            step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher'])
+           step([$class: 'CheckStylePublisher', pattern: 'target/scalastyle-result.xml, target/scala-2.11/scapegoat-report/scapegoat-scalastyle.xml'])
         }
       
 }
