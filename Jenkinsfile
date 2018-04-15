@@ -8,9 +8,9 @@ pipeline {
     pipeline {
         agent any
     
-        parameters {
-            string(name: 'tomcat_dev', defaultValue: 'http://localhost:8090/', description: 'Staging Server')
-            }
+    //    parameters {
+       //     string(name: 'tomcat_dev', defaultValue: 'http://localhost:8090/', description: 'Staging Server')
+      //      }
         
         triggers {
             pollSCM('* * * * *')
@@ -32,11 +32,11 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
 
-    stage('Static Code Analysis'){
-            steps {
-                    checkout scm
-                    sh "echo 'Run Static Code Analysis'"
-                    }
+  //  stage('Static Code Analysis'){
+        //    steps {
+            //        checkout scm
+             //       sh "echo 'Run Static Code Analysis'"
+           //         }
 
     }
 
