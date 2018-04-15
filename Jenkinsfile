@@ -53,7 +53,7 @@ pipeline {
         publishIssues issues:[spotbugs]
     }
       
-}
+
         
     
     post {
@@ -68,6 +68,6 @@ pipeline {
     }
 }
             
-        
+    }    
 
     
