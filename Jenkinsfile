@@ -1,25 +1,14 @@
-@@ -1,22 +1,75 @@
 pipeline {
     agent any
- 
-    tools {
-        maven 'localMaven'
-            }
-    pipeline {
-        agent any
-    
-    //    parameters {
-       //     string(name: 'tomcat_dev', defaultValue: 'http://localhost:8090/', description: 'Staging Server')
-      //      }
-        
-        triggers {
+
+    triggers {
             pollSCM('* * * * *')
-                }
+            }
         
-        tools {
+    tools {
             maven 'localMaven'
             git 'localGit'
-                }
+            }
 
   stages{
         stage('Build'){
