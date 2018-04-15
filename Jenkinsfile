@@ -48,7 +48,7 @@
                 checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'target/checkstyle-result.xml', unHealthy: ''
             }
         }
-        
+    }
     post {
         success {
         sh "echo 'Send mail on success'"
@@ -63,3 +63,4 @@
             
         
 
+    
