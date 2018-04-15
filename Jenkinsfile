@@ -21,19 +21,7 @@ pipeline {
             git 'localGit'
                 }
 
-    stages{
-    stage('Build'){
-                steps {
-                    sh 'mvn clean package'
-                        }
-                post {
-                    success {
-                        echo 'Now Archiving...'
-                        archiveArtifacts artifacts: '**/target/*.war'
-                    }
-                }
-
-stages{
+  stages{
         stage('Build'){
             steps {
                 bat 'mvn clean package'
@@ -76,7 +64,7 @@ stages{
          // mail to:"rafael.resende@outlook.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
     }
     }
-                }
+ }
             
         
 
