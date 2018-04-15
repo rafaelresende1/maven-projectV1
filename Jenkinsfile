@@ -4,7 +4,6 @@ pipeline {
     tools {
         maven 'localMaven'
             }
-    pipeline {
         agent any
     
     //    parameters {
