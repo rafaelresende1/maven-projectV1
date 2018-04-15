@@ -41,7 +41,7 @@
 
                 build job: 'maven-project'
                     }}
-    }
+    
         stage('checkstyle') {
             steps {
                 sh "mvn clean checkstyle:checkstyle -Dcheckstyle.config.location='https://github.com/rafaelresende1/maven-projectV1.git'"
