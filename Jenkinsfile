@@ -41,13 +41,13 @@ pipeline {
     }
 
             stage ('Deployments'){
- steps {
+                steps {
 
                 build job: 'maven-project'
                     }}
     
         stage('checkstyle') {
-            step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml', unstableTotalAll:'0'])
+            step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher'])
         }
       
 }
