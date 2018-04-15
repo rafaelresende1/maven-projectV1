@@ -42,6 +42,13 @@
                 build job: 'maven-project'
                     }}
     }
+        stage('checkstyle') {
+            steps {
+                sh "mvn clean checkstyle:checkstyle -Dcheckstyle.config.location='https://github.com/rafaelresende1/maven-projectV1.git'"
+                checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'target/checkstyle-result.xml', unHealthy: ''
+            }
+        }
+        
     post {
         success {
         sh "echo 'Send mail on success'"
