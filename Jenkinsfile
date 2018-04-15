@@ -14,7 +14,7 @@ pipeline {
         git 'localGit'
             }
 
-
+stages{
   stage('Build'){
             steps {
                 sh 'mvn clean package'
@@ -40,7 +40,7 @@ pipeline {
             build job: 'maven-project'
                 }
   }
-
+}
  post {
     success {
       sh "echo 'Send mail on success'"
@@ -50,7 +50,7 @@ pipeline {
       sh "echo 'Send mail on failure'"
       // mail to:"rafael.resende@outlook.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
 }
-
+ }
              }
         }
     
