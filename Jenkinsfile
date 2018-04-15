@@ -59,7 +59,6 @@ pipeline {
 }
         
     
-}
     post {
         success {
         sh "echo 'Send mail on success'"
@@ -70,7 +69,7 @@ pipeline {
          // mail to:"rafael.resende@outlook.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
     }
     }
- }
+}
             
         
 
