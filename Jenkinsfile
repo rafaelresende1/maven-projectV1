@@ -38,6 +38,7 @@ pipeline {
         }}
         
         stage('teste'){
+            steps{
         node {
     stage "Create build output"
     
@@ -54,7 +55,7 @@ pipeline {
     
     // Archive the build output artifacts.
     archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
-}   }
+}   }}
       
   }
 
