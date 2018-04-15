@@ -58,7 +58,10 @@ stages{
                 build job: 'maven-project'
                     }}
     
-             
+        stage('checkstyle') {
+            step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml', unstableTotalAll:'0'])
+        }
+      
 }
         
     }
