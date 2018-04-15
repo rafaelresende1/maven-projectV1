@@ -1,14 +1,11 @@
 pipeline {
-    agent any
+
+        agent any
  
     tools {
         maven 'localMaven'
             }
         agent any
-    
-    //    parameters {
-       //     string(name: 'tomcat_dev', defaultValue: 'http://localhost:8090/', description: 'Staging Server')
-      //      }
         
         triggers {
             pollSCM('* * * * *')
